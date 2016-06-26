@@ -1,0 +1,26 @@
+---
+- name: Set release directory fact
+  set_fact: release_destination="/var/www/uat/releases/{{ release_version }}"
+
+- name: Pull source files into the release directory
+  git: repo=/vagrant dest={{ release_destination }}
+
+- name: Ownership of /var/www
+  command: "chown -R vagrant:vagrant /var/www"
+  sudo: yes
+
+- name: Generate parameters file
+  template: src=parameters.yml.j2 dest="{{ release_destination }}/app/config/parameters.yml"
+
+- name: Composer install
+  shell: "cd {{ release_destination }} && composer install --prefer-dist --no-interaction --optimize-autoloader"
+
+- name: Migrate the database
+  command: "php {{ release_destination }}/bin/console doctrine:migrations:migrate --env=prod --no-interaction"
+
+- name: Ownership of /var/www
+  command: "chown -R vagrant:vagrant /var/www"
+  sudo: yes
+
+- name: Symlink to current directory
+  file: state=link src={{ release_destination }} path=/var/www/uat/current

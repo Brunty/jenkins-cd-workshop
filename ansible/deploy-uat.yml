@@ -1,0 +1,10 @@
+---
+- hosts: all
+  sudo: true
+  vars_files:
+    - vars/all.yml
+  roles:
+    - deploy-uat
+
+
+# checkout files from the repository into the release destination

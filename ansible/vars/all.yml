@@ -1,0 +1,111 @@
+---
+server:
+    install: '1'
+    packages: [htop, vim]
+    timezone: UTC
+    locale: en_US.UTF-8
+vagrant_local:
+    install: '1'
+    vm: { base_box: trusty64, hostname: jenkins-ci-workshop, ip: 192.168.66.99, memory: '512', sharedfolder: ./, syncType: nfs }
+nginx:
+    install: '1'
+    vhosts:
+      jenkins-workshop.dev:
+        docroot: /vagrant/web
+        servername: "jenkins-workshop.dev www.jenkins-workshop.dev"
+        front_controller: "app_dev.php"
+        environment: dev
+      jenkins-workshop.uat:
+        docroot: /var/www/uat/current/web
+        servername: "jenkins-workshop.uat www.jenkins-workshop.uat"
+        front_controller: "app.php"
+        environment: uat
+      jenkins-workshop.live:
+        docroot: /var/www/live/current/web
+        servername: "jenkins-workshop.live www.jenkins-workshop.live"
+        front_controller: "app.php"
+        environment: prod
+mysql:
+    install: '1'
+    root_password: password
+    databases:
+        - database_name: app_dev
+          database_user: app_dev_user
+          database_pass: password
+        - database_name: app_uat
+          database_user: app_uat_user
+          database_pass: password
+        - database_name: app_prod
+          database_user: app_prod_user
+          database_pass: password
+    dump: ''
+sqlite:
+    install: '1'
+php:
+    install: '1'
+    ppa: php5-5.6
+    packages: [php5-cli, php5-intl, php5-mcrypt, php5-sqlite, php5-mysql]
+xdebug:
+    install: '1'
+jenkins_plugins:
+    - ace-editor
+    - ant
+    - antisamy-markup-formatter
+    - bouncycastle-api
+    - branch-api
+    - build-timeout
+    - cloudbees-folder
+    - credentials
+    - credentials-binding
+    - durable-task
+    - email-ext
+    - email-ext-recipients-column
+    - external-monitor-job
+    - git
+    - git-client
+    - github
+    - github-api
+    - github-branch-source
+    - github-organization-folder
+    - git-server
+    - gradle
+    - handlebars
+    - icon-shim
+    - jquery-detached
+    - junit
+    - ldap
+    - mailer
+    - mapdb-api
+    - matrix-auth
+    - matrix-project
+    - momentjs
+    - notification
+    - pam-auth
+    - pipeline-build-step
+    - pipeline-input-step
+    - pipeline-rest-api
+    - pipeline-stage-step
+    - pipeline-stage-view
+    - pipeline-utility-steps
+    - plain-credentials
+    - scm-api
+    - script-security
+    - ssh-credentials
+    - ssh-slaves
+    - structs
+    - subversion
+    - timestamper
+    - token-macro
+    - windows-slaves
+    - workflow-aggregator
+    - workflow-api
+    - workflow-basic-steps
+    - workflow-cps
+    - workflow-cps-global-lib
+    - workflow-durable-task-step
+    - workflow-job
+    - workflow-multibranch
+    - workflow-scm-step
+    - workflow-step-api
+    - workflow-support
+    - ws-cleanup

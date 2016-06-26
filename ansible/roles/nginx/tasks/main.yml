@@ -1,0 +1,16 @@
+---
+- name: Install Nginx
+  sudo: yes
+  apt: pkg=nginx state=latest
+
+- name: Add Nginx vhosts
+  sudo: yes
+  template: src=default-{{ item.value.environment }}.j2 dest=/etc/nginx/sites-available/{{ item.key }}
+  notify: restart nginx
+  with_dict: "{{ nginx.vhosts }}"
+
+- name: Enable Nginx vhosts
+  sudo: yes
+  file: src=/etc/nginx/sites-available/{{ item.key }} dest=/etc/nginx/sites-enabled/{{ item.key }} owner=root group=root state=link
+  notify: restart nginx
+  with_dict: "{{ nginx.vhosts }}"

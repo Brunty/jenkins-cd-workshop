@@ -1,0 +1,2 @@
+[uat]
+192.168.66.99 ansible_user=vagrant ansible_password=vagrant
