@@ -1,9 +1,9 @@
 ---
 - name: Set release directory fact
-  set_fact: release_destination="{{ release_location }}/{{ release_version }}" version={{ release_version }}
+  set_fact: release_destination="{{ release_location }}/{{ release_version }}"
 
 - name: Pull source files into the release directory
-  git: repo=/vagrant dest={{ release_destination }}
+  git: repo=/vagrant dest={{ release_destination }} version={{ release_version }}
 
 - name: Ownership of /var/www
   command: "chown -R vagrant:vagrant /var/www"
@@ -23,4 +23,4 @@
   sudo: yes
 
 - name: Symlink to current directory
-  file: state=link src={{ release_destination }} path={{ deployment_location }}
+  file: state=link src={{ release_destination }} path={{ deployment_location }}/current
