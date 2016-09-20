@@ -58,7 +58,7 @@ stage("Tests [Integration / Functional / Acceptance]") {
 stage("Deploying to UAT") {
     node {
         def gitCommit = gitCommit()
-        sh "ansible-playbook ansible/deploy-uat.yml -i ansible/inventories/uat -e release_version={$gitCommit}"
+        sh "ansible-playbook ansible/deploy-uat.yml -i ansible/inventories/uat -e 'release_version=$gitCommit'"
     }
 }
 
@@ -80,7 +80,7 @@ stage("Deploy to production") {
     }
     node {
         def gitCommit = gitCommit()
-        sh "ansible-playbook ansible/deploy-prod.yml -i ansible/inventories/uat -e release_version={$gitCommit}"
+        sh "ansible-playbook ansible/deploy-prod.yml -i ansible/inventories/prod -e 'release_version=$gitCommit'"
     }
 }
 
