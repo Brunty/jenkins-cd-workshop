@@ -1,0 +1,3 @@
+
+- name: Disable host key checking
+  lineinfile: "dest=/etc/ansible/ansible.cfg state=present regexp='^;?#host_key_checking = False' line='host_key_checking = False'"
