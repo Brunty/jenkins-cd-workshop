@@ -45,15 +45,8 @@ Vagrant.configure("2") do |config|
 
     # If ansible is in your path it will provision from your HOST machine
     # If ansible is not found in the path it will be instaled in the VM and provisioned from there
-    if which('ansible-playbook')
-        config.vm.provision "ansible" do |ansible|
-            ansible.playbook = "ansible/playbook.yml"
-            ansible.inventory_path = "ansible/inventories/dev"
-            ansible.limit = 'all'
-        end
-    else
-        config.vm.provision :shell, path: "ansible/windows.sh", args: ["jenkins-ci-workshop"]
-    end
+
+    config.vm.provision :shell, path: "ansible/provision.sh", args: ["jenkins-ci-workshop"]
 
     config.vm.synced_folder "./", "/vagrant"
 end

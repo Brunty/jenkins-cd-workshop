@@ -3,6 +3,10 @@
   sudo: yes
   apt: pkg=nginx state=latest
 
+- name: Set permissions on nginx
+  lineinfile: "dest=/etc/nginx/nginx.conf state=present regexp='^;?user' line='user vagrant;'"
+  notify: restart nginx
+
 - name: Add Nginx vhosts
   sudo: yes
   template: src=default-{{ item.value.environment }}.j2 dest=/etc/nginx/sites-available/{{ item.key }}

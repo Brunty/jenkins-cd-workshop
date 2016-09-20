@@ -28,19 +28,19 @@ stage("Tests [Unit]") {
        phpunit: {
           node {
              unstash "project_files"
-             sh "vendor/bin/phpunit"
+             sh "bin/phpunit"
           }
        },
        phpspec: {
           node {
              unstash "project_files"
-             sh "vendor/bin/phpspec run"
+             sh "bin/phpspec run"
           }
        },
        behat_domain: {
           node {
              unstash "project_files"
-             sh "vendor/bin/behat"
+             sh "bin/behat"
           }
        }
     )
@@ -49,19 +49,16 @@ stage("Tests [Unit]") {
 stage("Tests [Integration / Functional / Acceptance]") {
     node {
        unstash "project_files"
-       sh "vendor/bin/behat"
-       sh "vendor/bin/behat"
-       sh "vendor/bin/behat"
+       sh "bin/behat"
+       sh "bin/behat"
+       sh "bin/behat"
    }
 }
 
 stage("Deploying to UAT") {
     node {
-        /*
-         Ultimately your deployments will likely be handled by a tool such as ansible, capistrano, puppet etc.
-         Here we're just running a simple bash script for the purposes of this workshop.
-        */
-        /* sh "scripts/deploy-uat.sh" */
+        def gitCommit = gitCommit()
+        sh "ansible-playbook ansible/deploy-uat.yml -i ansible/inventories/uat -e release_version={$gitCommit}"
     }
 }
 
@@ -82,8 +79,8 @@ stage("Deploy to production") {
         ])
     }
     node {
-        echo userInput['release_version']
-        echo userInput['release_environment']
+        def gitCommit = gitCommit()
+        sh "ansible-playbook ansible/deploy-prod.yml -i ansible/inventories/uat -e release_version={$gitCommit}"
     }
 }
 
