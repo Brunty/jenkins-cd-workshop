@@ -1,0 +1,8 @@
+---
+# I wouldn't recommend putting environment and sensitive config files in a file such as this
+# If you need to store environment variables / config in VCS, use ansible-vault to encrypt a variables file
+# But they're here for ease of deployment setup for the sake of the workshop
+database_name: app_prod
+database_user: app_prod_user
+database_pass: password
+deployment_location: /var/www/prod/releases

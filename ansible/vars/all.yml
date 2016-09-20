@@ -20,9 +20,9 @@ nginx:
         servername: "jenkins-workshop.uat www.jenkins-workshop.uat"
         front_controller: "app.php"
         environment: uat
-      jenkins-workshop.live:
-        docroot: /var/www/live/current/web
-        servername: "jenkins-workshop.live www.jenkins-workshop.live"
+      jenkins-workshop.prod:
+        docroot: /var/www/prod/current/web
+        servername: "jenkins-workshop.prod www.jenkins-workshop.prod"
         front_controller: "app.php"
         environment: prod
 mysql:

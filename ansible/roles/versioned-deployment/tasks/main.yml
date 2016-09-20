@@ -1,6 +1,6 @@
 ---
 - name: Set release directory fact
-  set_fact: release_destination="/var/www/uat/releases/{{ release_version }}"
+  set_fact: release_destination="{{ deployment_location }}/{{ release_version }}"
 
 - name: Pull source files into the release directory
   git: repo=/vagrant dest={{ release_destination }}
