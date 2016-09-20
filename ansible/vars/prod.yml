@@ -5,4 +5,5 @@
 database_name: app_prod
 database_user: app_prod_user
 database_pass: password
-deployment_location: /var/www/prod/releases
+deployment_location: /var/www/prod
+release_location: "{{ deployment_location }}/releases"

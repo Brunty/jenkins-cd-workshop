@@ -5,4 +5,5 @@
 database_name: app_uat
 database_user: app_uat_user
 database_pass: password
-deployment_location: /var/www/uat/releases
+deployment_location: /var/www/uat
+release_location: "{{ deployment_location }}/releases"
