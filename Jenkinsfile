@@ -50,8 +50,6 @@ stage("Tests [Integration / Functional / Acceptance]") {
     node {
        unstash "project_files"
        sh "bin/behat"
-       sh "bin/behat"
-       sh "bin/behat"
    }
 }
 
@@ -71,13 +69,9 @@ stage("Approval [UAT]") {
 
 stage("Deploy to production") {
     timeout(time: 7, unit: 'DAYS') {
-        def gitCommit = gitCommit()
-        def userInput = input(
-         id: 'userInput', message: 'Let\'s deploy?', parameters: [
-         [$class: 'TextParameterDefinition', defaultValue: "${gitCommit}", description: 'Release version?', name: 'release_version'],
-         [$class: 'TextParameterDefinition', defaultValue: "production", description: 'Release environment?', name: 'release_environment'],
-        ])
+        input message: 'Go ahead with the deployment to production?'
     }
+
     node {
         def gitCommit = gitCommit()
         sh "ansible-playbook ansible/deploy-prod.yml -i ansible/inventories/prod -e 'release_version=$gitCommit'"

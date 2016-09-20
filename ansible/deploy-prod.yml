@@ -1,0 +1,11 @@
+---
+- hosts: all
+  sudo: true
+  vars_files:
+    - vars/all.yml
+    - vars/prod.yml
+  roles:
+    - versioned-deployment
+
+
+# checkout files from the repository into the release destination
