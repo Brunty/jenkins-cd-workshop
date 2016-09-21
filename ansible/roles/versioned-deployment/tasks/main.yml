@@ -4,10 +4,8 @@
 
 - name: Pull source files into the release directory
   git: repo=/vagrant dest={{ release_destination }} version={{ release_version }}
-
-- name: Ownership of /var/www
-  command: "chown -R vagrant:vagrant /var/www"
-  sudo: yes
+  notify:
+      - chown /var/www
 
 - name: Generate parameters file
   template: src=parameters.yml.j2 dest="{{ release_destination }}/app/config/parameters.yml"
@@ -17,10 +15,8 @@
 
 - name: Migrate the database
   command: "php {{ release_destination }}/bin/console doctrine:migrations:migrate --env=prod --no-interaction"
-
-- name: Ownership of /var/www
-  command: "chown -R vagrant:vagrant /var/www"
-  sudo: yes
+  notify:
+      - chown /var/www
 
 - name: Symlink to current directory
   file: state=link src={{ release_destination }} path={{ deployment_location }}/current

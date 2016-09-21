@@ -1,0 +1,4 @@
+# Temporary fix for ownership of /var/www as it's owned by root when ansible provisions things
+- name: chown /var/www
+  file: dest=/var/www owner=vagrant group=vagrant mode=0755 recurse=yes
+  sudo: yes
