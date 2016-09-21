@@ -7,6 +7,7 @@ server:
 vagrant_local:
     install: '1'
     vm: { base_box: trusty64, hostname: jenkins-ci-workshop, ip: 192.168.66.99, memory: '512', sharedfolder: ./, syncType: nfs }
+project_repository: '/vagrant/.git'
 nginx:
     install: '1'
     vhosts:

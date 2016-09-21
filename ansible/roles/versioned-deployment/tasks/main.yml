@@ -3,7 +3,7 @@
   set_fact: release_destination="{{ release_location }}/{{ release_version }}"
 
 - name: Pull source files into the release directory
-  git: repo=/vagrant dest={{ release_destination }} version={{ release_version }}
+  git: repo={{ project_repository }} dest={{ release_destination }} version={{ release_version }}
   notify:
       - chown /var/www
 
