@@ -50,7 +50,7 @@ stage("Tests [Acceptance]") {
 stage("Deploying to UAT") {
     node {
         def gitCommit = gitCommit()
-        ansiblePlaybook playbook: "ansible/deploy-uat.yml", inventory: "ansible/inventories/uat", extraVars: [release_version: "$gitCommit"]
+        ansiblePlaybook playbook: "ansible/deploy-uat.yml", inventory: "ansible/inventories/uat", extraVars: [release_version: "$gitCommit", secret_thing: [value: 'mySecretValue', hidden: true]]
     }
 }
 
