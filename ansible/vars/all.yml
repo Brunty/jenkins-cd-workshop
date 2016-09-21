@@ -49,6 +49,7 @@ xdebug:
     install: '1'
 jenkins_plugins:
     - ace-editor
+    - ansible
     - ant
     - antisamy-markup-formatter
     - bouncycastle-api

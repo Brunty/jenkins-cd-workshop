@@ -36,17 +36,11 @@ stage("Tests [Unit]") {
              unstash "project_files"
              sh "bin/phpspec run"
           }
-       },
-       behat_domain: {
-          node {
-             unstash "project_files"
-             sh "bin/behat"
-          }
        }
     )
 }
 
-stage("Tests [Integration / Functional / Acceptance]") {
+stage("Tests [Acceptance]") {
     node {
        unstash "project_files"
        sh "bin/behat"
@@ -56,7 +50,7 @@ stage("Tests [Integration / Functional / Acceptance]") {
 stage("Deploying to UAT") {
     node {
         def gitCommit = gitCommit()
-        sh "ansible-playbook ansible/deploy-uat.yml -i ansible/inventories/uat -e 'release_version=$gitCommit'"
+        ansiblePlaybook playbook: "ansible/deploy-uat.yml", inventory: "ansible/inventories/uat", extraVars: [release_version: "$gitCommit"]
     }
 }
 
@@ -74,7 +68,7 @@ stage("Deploy to production") {
 
     node {
         def gitCommit = gitCommit()
-        sh "ansible-playbook ansible/deploy-prod.yml -i ansible/inventories/prod -e 'release_version=$gitCommit'"
+        ansiblePlaybook playbook:"ansible/deploy-prod.yml", inventory: "ansible/inventories/prod", extraVars: [release_version: "$gitCommit"]
     }
 }
 
