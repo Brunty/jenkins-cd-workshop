@@ -68,6 +68,8 @@ You may need to reload if your guest additions weren't the right version at the 
 
 See this thread: https://github.com/mitchellh/vagrant/issues/6059
 
+I've tested the vagrant box on OS X and some limited testing on Windows 10, Windows 10 had a number of issues (not related to the box, but to VirtualBox and Vagrant versions - so if you have other boxes running, this should be fine)
+
 ## Code & File Editors
 
 We'll be using PHPStorm for editing PHP files, though for the most part, PHP files won't be the focus of this workshop. The `Jenkinsfile` will be mostly what we're focusing on - and this uses the [Groovy](http://www.groovy-lang.org) programming language. If you'd like a simple to setup editor for this, install [Atom](https://atom.io) and the language-groovy plugin:
