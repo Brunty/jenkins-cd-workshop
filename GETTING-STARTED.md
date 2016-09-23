@@ -66,7 +66,11 @@ You may need to reload if your guest additions weren't the right version at the 
 
 ### `Command: ["hostonlyif", "create"]` on Windows 10
 
-See this thread: https://github.com/mitchellh/vagrant/issues/6059
+See these threads:
+
+* https://github.com/mitchellh/vagrant/issues/6059
+* https://github.com/mitchellh/vagrant/issues/2392
+
 
 ## Code & File Editors
 
