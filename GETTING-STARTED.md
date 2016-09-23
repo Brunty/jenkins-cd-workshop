@@ -66,7 +66,11 @@ You may need to reload if your guest additions weren't the right version at the 
 
 ### `Command: ["hostonlyif", "create"]` on Windows 10
 
-See this thread: https://github.com/mitchellh/vagrant/issues/6059
+See these threads:
+
+* https://github.com/mitchellh/vagrant/issues/6059
+* https://github.com/mitchellh/vagrant/issues/2392
+
 
 I've tested the vagrant box on OS X and some limited testing on Windows 10, Windows 10 had a number of issues (not related to the box, but to VirtualBox and Vagrant versions - so if you have other boxes running, this should be fine)
 
