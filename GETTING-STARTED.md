@@ -64,6 +64,10 @@ You may need to reload if your guest additions weren't the right version at the 
 
 `vagrant reload`
 
+### `Command: ["hostonlyif", "create"]` on Windows 10
+
+See this thread: https://github.com/mitchellh/vagrant/issues/6059
+
 ## Code & File Editors
 
 We'll be using PHPStorm for editing PHP files, though for the most part, PHP files won't be the focus of this workshop. The `Jenkinsfile` will be mostly what we're focusing on - and this uses the [Groovy](http://www.groovy-lang.org) programming language. If you'd like a simple to setup editor for this, install [Atom](https://atom.io) and the language-groovy plugin:
