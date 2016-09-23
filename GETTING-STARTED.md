@@ -2,6 +2,8 @@
 
 This VM will use ansible for provisioning, you don't need it installed on your host machine, the vagrant box runs a script inside itself to provision.
 
+It's been tested and working on OS X and Windows 10.
+
 # Installation / provisioning
 
 Clone this repository, then `cd` into the directory it's cloned into and run:
