@@ -30,7 +30,23 @@ Login with the following credentials:
 
 Select "install suggested plugins" and confirm that all the plugins listed are installed (they should have been installed during provisioning)
 
-Once confirmed, you're done! (until the workshop)
+Once confirmed, you're done with the main stuff! (until the workshop)
+
+## Extras:
+
+You may want to connect to the VM to view databases, you can do this using a program such as [Sequel Pro](https://www.sequelpro.com) and the following details (connecting via SSH):
+
+| Username     | Password      |
+|:-------------|:--------------|
+| MySQL Host   | 127.0.0.1     |
+| Username     | root          |
+| Password     | password      |
+| Database     | [leave blank] |
+| Port         | [leave blank] |
+| SSH Host     | 192.168.66.99 |
+| SSH User     | vagrant       |
+| SSH Password | vagrant       |
+| SSH Port     | [leave blank] |
 
 ## Fixes for possible issues you may come across:
 
