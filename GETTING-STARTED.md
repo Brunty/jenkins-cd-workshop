@@ -38,6 +38,8 @@ Select "install suggested plugins" and confirm that all the plugins listed are i
 
 Once confirmed, you're done with the main stuff! (until the workshop)
 
+The day before the workshop, I'd recommend running a `git pull` and `vagrant provision` just to pull down and run any final changes that are made.
+
 ## Extras:
 
 You may want to connect to the VM to view databases, you can do this using a program such as [Sequel Pro](https://www.sequelpro.com) and the following details (connecting via SSH):
