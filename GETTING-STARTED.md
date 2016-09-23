@@ -10,6 +10,10 @@ Clone this repository, then `cd` into the directory it's cloned into and run:
 
 This will use a script inside the vagrant box to install ansible into the VM, install the required roles and the box will provision itself.
 
+To get into the box, run `vagrant ssh` and `cd /vagrant` as all files for the development environment for the site reside in `/vagrant` (though this isn't particularly important as we won't be working on the PHP project all that much)
+
+Once there, run `composer install` to get packages installed and ready for development.
+
 Once that's done, add the following to your `hosts` file (will vary depending on your operating system):
 
 ```
@@ -70,7 +74,6 @@ See these threads:
 
 * https://github.com/mitchellh/vagrant/issues/6059
 * https://github.com/mitchellh/vagrant/issues/2392
-
 
 I've tested the vagrant box on OS X and some limited testing on Windows 10, Windows 10 had a number of issues (not related to the box, but to VirtualBox and Vagrant versions - so if you have other boxes running, this should be fine)
 
