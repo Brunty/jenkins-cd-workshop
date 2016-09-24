@@ -1,5 +1,6 @@
 ## Just a file full of useful links and resources for working with Jenkins and the pipeline system
 
+* Jenkins terminology: https://wiki.jenkins-ci.org/display/JENKINS/Terminology
 * The Jenkins Pipeline plugin: https://jenkins.io/solutions/pipeline/
 * Pipeline steps reference: https://jenkins.io/doc/pipeline/steps/
 * Pipeline examples / snippets: https://github.com/jenkinsci/pipeline-examples
