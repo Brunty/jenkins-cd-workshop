@@ -10,9 +10,6 @@ stage("Setup Project") {
        // Composer install
        sh "composer install --prefer-dist --optimize-autoloader"
 
-       // Create zip file of working directory and archive as an artifact
-       // zip archive: true, zipFile: gitCommit() + ".zip"
-
        // Stash our whole project files for later use
        stash "project_files"
     }
