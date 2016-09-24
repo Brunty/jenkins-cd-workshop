@@ -1,0 +1,12 @@
+- name: Create shared files parent folders
+  file: state=directory path="{{ shared_location }}/{{ item|dirname }}"
+  when: "item|dirname != ''"
+  with_items: "{{ shared_files }}"
+
+- name: Create shared files
+  file: state=touch path="{{ shared_location }}/{{item}}"
+  with_items: "{{ shared_files }}"
+
+- name: Create shared folders
+  file: state=directory path="{{ shared_location }}/{{item}}"
+  with_items: "{{ shared_directories }}"

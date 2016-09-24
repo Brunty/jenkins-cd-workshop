@@ -1,0 +1,7 @@
+- name: Composer install
+  shell: "cd {{ release_destination }} && composer install --prefer-dist --no-interaction --optimize-autoloader"
+
+- name: Migrate the database
+  command: "php {{ release_destination }}/bin/console doctrine:migrations:migrate --env=prod --no-interaction"
+  notify:
+      - chown release destination

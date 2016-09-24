@@ -1,22 +1,12 @@
 ---
-- name: Set release directory fact
-  set_fact: release_destination="{{ release_location }}/{{ release_version }}"
+- include: set-facts.yml
 
-- name: Pull source files into the release directory
-  git: repo={{ project_repository }} dest={{ release_destination }} version={{ release_version }} force=yes
-  notify:
-      - chown /var/www
+- include: structure.yml
 
-- name: Generate parameters file
-  template: src=parameters.yml.j2 dest="{{ release_destination }}/app/config/parameters.yml"
+- include: source.yml
 
-- name: Composer install
-  shell: "cd {{ release_destination }} && composer install --prefer-dist --no-interaction --optimize-autoloader --no-dev"
+- include: parameters.yml
 
-- name: Migrate the database
-  command: "php {{ release_destination }}/bin/console doctrine:migrations:migrate --env=prod --no-interaction"
-  notify:
-      - chown /var/www
+- include: install.yml
 
-- name: Symlink to current directory
-  file: state=link src={{ release_destination }} path={{ deployment_location }}/current
+- include: symlinks.yml

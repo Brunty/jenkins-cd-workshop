@@ -1,0 +1,4 @@
+- name: Pull source files into the release directory
+  git: repo={{ project_repository }} dest={{ release_destination }} version={{ release_version }} force=yes
+  notify:
+      - chown release destination

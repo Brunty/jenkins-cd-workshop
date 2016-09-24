@@ -1,0 +1,2 @@
+- name: Set release directory fact
+  set_fact: release_destination="{{ release_location }}/{{ release_version }}"

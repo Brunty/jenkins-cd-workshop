@@ -1,0 +1,10 @@
+- name: Symlink shared files
+  file: state=link src="{{ shared_location }}/{{item}}" path="{{ release_destination }}/{{item}}" force=yes
+  with_items: "{{ shared_files }}"
+
+- name: Symlink shared directories
+  file: state=link src="{{ shared_location }}/{{item}}" path="{{ release_destination }}/{{item}}" force=yes
+  with_items: "{{ shared_directories }}"
+
+- name: Symlink to current directory
+  file: state=link src={{ release_destination }} path={{ webroot_location }}

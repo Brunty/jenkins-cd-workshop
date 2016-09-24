@@ -2,3 +2,11 @@
 database_name: ~
 database_user: ~
 database_pass: ~
+deployment_location: /var/www
+release_location: "{{ deployment_location }}/releases"
+webroot_location: "{{ deployment_location }}/current"
+shared_location: "{{ deployment_location }}/shared"
+shared_files:
+  - "app/config/parameters.yml"
+shared_directories:
+  - "web/uploads"

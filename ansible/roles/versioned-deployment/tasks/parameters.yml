@@ -1,0 +1,2 @@
+- name: Generate parameters file
+  template: src=parameters.yml.j2 dest="{{ release_destination }}/app/config/parameters.yml"
