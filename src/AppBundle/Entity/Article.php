@@ -22,12 +22,19 @@ class Article
     private $id;
 
     /**
+     * @param int $id
+     */
+    public function __construct($id)
+    {
+        $this->id = (int) $id;
+    }
+    /**
      * Get id
      *
      * @return integer
      */
     public function getId()
     {
-        return $this->id;
+
     }
 }
