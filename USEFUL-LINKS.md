@@ -3,6 +3,7 @@
 * Jenkins terminology: https://wiki.jenkins-ci.org/display/JENKINS/Terminology
 * The Jenkins Pipeline plugin: https://jenkins.io/solutions/pipeline/
 * Pipeline steps reference: https://jenkins.io/doc/pipeline/steps/
+* Pipeline syntax helper: http://jenkins-workshop.dev:8080/job/Workshop%20delivery/pipeline-syntax/
 * Pipeline examples / snippets: https://github.com/jenkinsci/pipeline-examples
 * Pipeline Best Practices: https://github.com/jenkinsci/pipeline-examples/blob/master/docs/BEST_PRACTICES.md
 * Pipeline as code https://jenkins.io/doc/book/pipeline-as-code/
