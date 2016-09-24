@@ -11,7 +11,7 @@
   template: src=parameters.yml.j2 dest="{{ release_destination }}/app/config/parameters.yml"
 
 - name: Composer install
-  shell: "cd {{ release_destination }} && composer install --prefer-dist --no-interaction --optimize-autoloader"
+  shell: "cd {{ release_destination }} && composer install --prefer-dist --no-interaction --optimize-autoloader --no-dev"
 
 - name: Migrate the database
   command: "php {{ release_destination }}/bin/console doctrine:migrations:migrate --env=prod --no-interaction"
