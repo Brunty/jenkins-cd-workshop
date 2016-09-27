@@ -14,6 +14,6 @@ class ArticleTest extends \PHPUnit_Framework_TestCase
     {
         $article = new Article(1000);
 
-        $this->assertEquals(1000, $article->getId());
+        $this->assertEquals(null, $article->getId());
     }
 }
