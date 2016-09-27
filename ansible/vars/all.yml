@@ -68,7 +68,9 @@ jenkins_plugins:
     - github
     - github-api
     - github-branch-source
+    - github-oauth
     - github-organization-folder
+    - github-pullrequest
     - git-server
     - gradle
     - handlebars
