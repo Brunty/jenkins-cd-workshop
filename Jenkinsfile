@@ -8,7 +8,7 @@ stage("Setup Project") {
        sh "ls -lah"
 
        // Check out our repository
-       git url: "/vagrant", branch: "master"
+       git poll: true, url: "/vagrant", branch: "master"
 
        // Composer install
        sh "composer install --prefer-dist --optimize-autoloader"
