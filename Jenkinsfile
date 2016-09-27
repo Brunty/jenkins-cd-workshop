@@ -1,8 +1,11 @@
 #!/usr/bin/env groovy
 stage("Setup Project") {
-    node {
+    node() {
+        sh "ls -lah"
        // clean out all files within this workspace
        deleteDir()
+
+       sh "ls -lah"
 
        // Check out our repository
        git url: "/vagrant", branch: "master"
